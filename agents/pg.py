@@ -73,7 +73,7 @@ class PG:
                                          'valid',
                                          'relu')
         width = network.get_shape()[2]
-        network = tflearn.layers.conv_2d(network, 48,
+        network = tflearn.layers.conv_2d(network, 8,
                                          [1, width],
                                          [1, 1],
                                          "valid",
@@ -82,7 +82,7 @@ class PG:
                                          weight_decay=5e-9)
         w_previous=tf.placeholder(tf.float32,shape=[None,self.M])
         network=tf.concat([network,tf.reshape(w_previous, [-1, self.M, 1, 1])],axis=3)
-        network = tflearn.layers.conv_2d(network, 1,
+        network = tflearn.layers.conv_2d(network, 8,
                                          [1, network.get_shape()[2]],
                                          [1, 1],
                                          "valid",

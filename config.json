@@ -11,7 +11,7 @@
 		"market_types":"China",
 	    "codes":5,
 		"features":["close","high"],
-		"agents":["CNN","PG","10"],
+		"agents":["CNN","PG","50"],
 		"epochs":"100",
 		"noise_flag":"False",
 		"record_flag":"False",

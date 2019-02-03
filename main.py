@@ -128,6 +128,7 @@ def backtest(agent,env):
     from agents.UCRP import UCRP
     from agents.Winner import WINNER
     from agents.Losser import LOSSER
+    from agents.BnH import BnH
 
 
     agents=[]
@@ -135,7 +136,8 @@ def backtest(agent,env):
     agents.append(WINNER())
     agents.append(UCRP())
     agents.append(LOSSER())
-    labels=['PG','Winner','UCRP','Losser']
+    agents.append(BnH())
+    labels=['PG','Winner','UCRP','Losser', 'BnH']
 
     wealths_result=[]
     rs_result=[]
@@ -219,7 +221,6 @@ def session(config,args):
     from data.environment import Environment
     codes, start_date, end_date, features, agent_config, market,predictor, framework, window_length,noise_flag, record_flag, plot_flag,reload_flag,trainable,method=parse_config(config,args)
     env = Environment()
-
     global M
     M=codes+1
 
@@ -232,7 +233,6 @@ def session(config,args):
     #     print("*-----------------Loading PPO Agent---------------------*")
     #     from agents.ppo import PPO
     #     agent = PPO(predictor, len(codes) + 1, int(window_length), len(features), '-'.join(agent_config), reload_flag,trainable)
-
 
     stocktrader=StockTrader()
     PATH_prefix = "result/PG/" + str(args['num']) + '/'
